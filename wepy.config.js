@@ -2,7 +2,7 @@ var prod = process.env.NODE_ENV === 'production'
 var path = require('path');
 var fs = require('fs');
 module.exports = {
-  wpyExt: '.wpy',
+  wpyExt: '.vue',
   eslint: false,
   compilers: {
     less: {
@@ -81,7 +81,7 @@ function deleteTarget(fileUrl) {
       if (removeNumber === len) {
         // 删除当前文件夹下的所有文件后，删除当前空文件夹（注：所有的都采用同步删除）
         fs.rmdirSync(fileUrl);
-        console.log('删除文件夹' + fileUrl + '成功');
+        console.log(`删除文件夹${fileUrl}成功`)
       }
     } else {
       fs.rmdirSync(fileUrl)
@@ -89,6 +89,6 @@ function deleteTarget(fileUrl) {
   } else {
     // 当前文件为文件时
     fs.unlinkSync(fileUrl);
-    console.log('删除文件' + fileUrl + '成功');
+    console.log(`删除文件${fileUrl}成功`)
   }
 }

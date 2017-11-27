@@ -2,16 +2,17 @@
   <view class="container">
     <swiper class="swiper" indicator-active-color="{{indicatorActiveColor}}" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{adList}}" wx:key="key">
-        <swiper-item>
+        <!-- <swiper-item>
           <image src="{{item.picUrl}}" class="slide-image" @tap="goToAdvert({{item.advertUrl}})"/>
         </swiper-item>
+        -->
       </block>
     </swiper>
     <view class="pos">
       <view class="search_read_only">
         <navigator class="search_content" open-type="navigate" url="/pages/search">
           <i class="iconfont icon-search"></i>
-          <view class="search_input">搜索商品</view>
+          <view class="search_input">搜索工作</view>
         </navigator>
         <navigator class="message" url="/pages/messages">
           <i class="iconfont icon-message cfff"></i>
@@ -22,19 +23,15 @@
     <view class="nav_list">
       <navigator open-type="navigate" url="/pages/sign_in">
         <image src="../images/icon_nav_01_new.png" class="nav_icon"></image>
-        <view class="nav_text">签到有礼</view>
-      </navigator>
-      <navigator open-type="navigate" url="/pages/exchange_goods">
-        <image src="../images/icon_nav_02_new.png" class="nav_icon"></image>
-        <view class="nav_text">换货专区</view>
+        <view class="nav_text">工作签到</view>
       </navigator>
       <navigator open-type="navigate" url="/pages/wholesale">
         <image src="../images/icon_nav_03_new.png" class="nav_icon"></image>
-        <view class="nav_text">特价专区</view>
+        <view class="nav_text">最新工作</view>
       </navigator>
       <navigator open-type="navigate" url="/pages/replenishment_goods">
         <image src="../images/icon_nav_04_new.png" class="nav_icon"></image>
-        <view class="nav_text">我要补货</view>
+        <view class="nav_text">我要推荐</view>
       </navigator>
     </view>
     <!--发现好商品模块-->
@@ -54,7 +51,7 @@ import BottomLoadMore from "../components/common/bottomLoadMore"
 import Placeholder from "../components/common/placeholder"
 export default class Home extends wepy.page {
   config = {
-    navigationBarTitleText: '素洁服装厂',
+    navigationBarTitleText: '微工作',
     navigationBarBackgroundColor: '#e42600',
     navigationBarTextStyle: 'white',
   }
@@ -139,7 +136,7 @@ export default class Home extends wepy.page {
         console.log(res.target)
       }
       return {
-        title: '素洁服装厂',
+        title: '微工作',
         path: '/pages/home',
         success: function(res) {
           // 转发成功
@@ -175,7 +172,7 @@ export default class Home extends wepy.page {
 </script>
 <style lang="less">
 .swiper {
-  height: 348rpx;
+  height: 65rpx;
 }
 
 .slide-image {

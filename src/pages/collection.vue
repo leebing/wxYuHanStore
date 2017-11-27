@@ -11,9 +11,9 @@
   <tab @currentTab.user="getCurrentTab" :currentTab.sync="currentTab" :tabList.sync="tabList" ></tab>
   </view>
   <scroll-view scroll-y="true" class="swiper-item-box" style="height:{{winHeight - 31}}px" bindscrolltolower="onReachBottom">
-  <!-- 我的足迹 -->
+  <!-- 工作履历 -->
   <collectionList :list.sync="browselist" wx:if="{{currentTab==0}}"></collectionList>
-  <!-- 我的收藏 -->
+  <!-- 工资明细 -->
   <collectionList :list.sync="favorlist" wx:if="{{currentTab==1}}"></collectionList>
   </scroll-view>
   </view>
@@ -44,7 +44,7 @@ export default class PointsRules extends wepy.page {
   data = {
     browselist: [],
     favorlist:[],
-    tabList: ["我的足迹", "我的收藏"],
+    tabList: ["工作履历", "工资明细"],
     currentTab: {
       default: 0
     },

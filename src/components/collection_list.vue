@@ -93,7 +93,6 @@ export default class CollecntionList extends wepy.component {
       }
     });
     if (json.data.code == 0) {
-      console.log("===========商品取消收藏成功=========")
       //tip.toast("取消收藏成功");
       let retList = [];
       for (var i = 0; i < this.list.length; i++) {

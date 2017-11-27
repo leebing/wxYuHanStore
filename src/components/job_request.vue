@@ -35,10 +35,10 @@
   </view>
   <view class="empty_cart" wx:if="{{list.length==0}}">
     <image src="../images/empty_cart.png" class="empty_cart_img"></image>
-    <view class="empty_cart_text">购物车还是空的</view>
+    <view class="empty_cart_text">尚未申请工作</view>
     <view class="shop_btn">
       <view class="block btn_group">
-        <view class="btn get_store" @tap="goIndex">去逛逛</view>
+        <view class="btn get_store" @tap="goIndex">挑选好工作</view>
       </view>
     </view>
   </view>

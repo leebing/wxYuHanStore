@@ -79,7 +79,7 @@
 <script>
 import wepy from 'wepy';
 import tip from '../utils/tip'
-import ShopItemList from '../components/shop_item_list'
+import ShopItemList from '../components/job_item_list'
 import api from '../api/api'
 import {
   SYSTEM_INFO,

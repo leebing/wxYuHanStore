@@ -3,7 +3,7 @@
     <view class="search">
       <view class="serch_content">
         <i class="iconfont icon-search"></i>
-        <input type="text" name="search_input" bindinput="searchInput" class="search_input" focus="true" value="{{search_input_value}}" confirm-type="search" placeholder="搜索商品" />
+        <input type="text" name="search_input" bindinput="searchInput" class="search_input" focus="true" value="{{search_input_value}}" confirm-type="search" placeholder="搜索工作" />
         <i wx:if="{{search_input_value!=''}}" @tap="delText" class="iconfont icon-del"></i>
       </view>
       <button class="btn btn_cancel" @tap="goBack()" wx:if="{{search_input_value==''}}">取消</button>

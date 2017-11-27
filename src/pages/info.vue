@@ -13,42 +13,34 @@
             <image class="item_img" src="../images/icon_my_01.png"></image>
             <view class="text" style="color:#fe2a2a">绑定手机号</view>
           </view>
-          <view class="tip">绑定手机号可更好的让我们服务好您！</view>
         </view>
         <view class="arrow">&gt;</view>
       </navigator>
       <navigator class="item" url="/pages/order">
         <view class="item_content">
           <image class="item_img" src="../images/icon_my_02.png"></image>
-          <view class="text">全部订单</view>
-        </view>
-        <view class="arrow">&gt;</view>
-      </navigator>
-      <navigator class="item" url="/pages/reorder">
-        <view class="item_content">
-          <image class="item_img" src="../images/icon_my_02.png"></image>
-          <view class="text">补货订单</view>
-        </view>
-        <view class="arrow">&gt;</view>
-      </navigator>
-      <navigator class="item" url="/pages/points">
-        <view class="item_content">
-          <image class="item_img" src="../images/icon_my_03.png"></image>
-          <view class="text">我的积分</view>
-        </view>
-        <view class="arrow">&gt;</view>
-      </navigator>
-      <navigator class="item" url="/pages/collection?type=0">
-        <view class="item_content">
-          <image class="item_img" src="../images/icon_my_04.png"></image>
-          <view class="text">我的足迹</view>
+          <view class="text">工作履历</view>
         </view>
         <view class="arrow">&gt;</view>
       </navigator>
       <navigator class="item" url="/pages/collection?type=1">
         <view class="item_content">
           <image class="item_img" src="../images/icon_my_05.png"></image>
-          <view class="text">我的收藏</view>
+          <view class="text">工资明细</view>
+        </view>
+        <view class="arrow">&gt;</view>
+      </navigator>
+      <navigator class="item" url="/pages/points">
+        <view class="item_content">
+          <image class="item_img" src="../images/icon_my_03.png"></image>
+          <view class="text">推荐佣金</view>
+        </view>
+        <view class="arrow">&gt;</view>
+      </navigator>
+      <navigator class="item" url="/pages/collection?type=0">
+        <view class="item_content">
+          <image class="item_img" src="../images/icon_my_04.png"></image>
+          <view class="text">管理佣金</view>
         </view>
         <view class="arrow">&gt;</view>
       </navigator>
@@ -57,7 +49,7 @@
       <navigator class="item" url="/pages/messages">
         <view class="item_content">
           <image class="item_img" src="../images/icon_my_06.png"></image>
-          <view class="text">我的消息</view>
+          <view class="text">提醒消息</view>
         </view>
         <view class="arrow">&gt;</view>
       </navigator>
@@ -101,7 +93,7 @@ export default class Index extends wepy.page {
     });
 
     if (json.data.code == 0) {
-      if (json.data.user.mobile.length>0) {
+      if (json.data.user && json.data.user.mobile.length>0) {
         this.bShowBind=false;
       } else {
         this.bShowBind = true;
@@ -193,7 +185,7 @@ export default class Index extends wepy.page {
     color: #999;
     font-size: 24rpx;
     margin-top: 20rpx;
-    margin-left: 60rpx;
+    margin-left: 40rpx;
   }
 }
 

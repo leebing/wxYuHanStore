@@ -18,14 +18,14 @@ const wxJsCode2Session = (params) => wxRequest(params, apiMall + "/api/wechat/js
 const user2session = (params) => wxRequest(params, apiMall + "/api/wechat/user2session?jsoncallback=?");
 
 //商品接口---begin
-//首页发现商品接口
-const hostGoodsList = (params) => wxRequest(params, apiMall + '/api/home/hostGoodsList');
+//首页好工作接口
+const hostJobsList = (params) => wxRequest(params, apiMall + '/api/home/hostGoodsList');
 const getHomeDisvocerList = (params) => wxRequest(params, apiMall + '/api/mall/discoverList');
 //查询商品列表
 const getGoodsList = (params) => wxRequest(params, apiMall + '/api/mall/searchGoodsList');
 
 //查询商品详情信息
-const goodsDetail = (params) => wxRequest(params, apiMall + '/api/mall/goods');
+const jobsDetail = (params) => wxRequest(params, apiMall + '/api/mall/goods');
 //商品加入购物车
 const addCart = (params) => wxRequest(params, apiMall + '/api/mall/goodsCart/add');
 //用户的购物车商品列表
@@ -143,37 +143,52 @@ const childGoodsCatetoryList = (params) => wxRequest(params, apiMall + '/api/mal
 const getAdList = (params) => wxRequest(params, apiMall + '/api/adverts/list');
 
 module.exports = {
-  hostGoodsList,
-  getDiscoverList, getHomeDisvocerList,
+  hostJobsList,
+  getDiscoverList, 
+  getHomeDisvocerList,
   getGoodsList,
-  goodsDetail,
+  jobsDetail,
   wxJsCode2Session,
   user2session,
   userSginInfo,
   doSign,
-  addCart, cartList, cartCheck, cartDel, cartUpdateNum,
-  preOrder,refundApply,
+  addCart, 
+  cartList, 
+  cartCheck, 
+  cartDel, 
+  cartUpdateNum,
+  preOrder,
+  refundApply,
   pointInfo,
-  browseInfo,addBrowser,delUserBrowser,
+  browseInfo,
+  addBrowser,
+  delUserBrowser,
   favoriteInfo,
   messageInfo,
-  registerUser,sendRandCode,
+  registerUser,
+  sendRandCode,
   getUserInfo,
   getUserAddress,
   saveAddress,
   receiverInfoById,
   getUserAddress,
-  addSearchKeyword, searchKeywordList, clearSearchKeyword,
-  getMyOrderList, saveByCart,toPay,
-  rootCtegoryList, childGoodsCatetoryList,
+  addSearchKeyword, 
+  searchKeywordList, 
+  clearSearchKeyword,
+  getMyOrderList, 
+  saveByCart,toPay,
+  rootCtegoryList, 
+  childGoodsCatetoryList,
   getOrderInfo,
-  editOrderInfo, goodsUserOrderList,
+  editOrderInfo, 
+  goodsUserOrderList,
   orderExpressInfo,
   delUserAddress,
   goodsFavorite,
   goodsUnFavorite,
   goodsIsFavorite,
-  getMyOrderSize,getPayOrderDetail,
+  getMyOrderSize,
+  getPayOrderDetail,
   getAdList,
   getSignDate
 }

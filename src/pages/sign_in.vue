@@ -2,7 +2,7 @@
   <view class="sgin_in">
     <image src="../images/bc_qdyl.png" class="head_bc"></image>
     <view class="qd_content">
-      <view class="jf">积分:{{score}}</view>
+      <view class="jf">今日到目前为止，您已经赚了{{score}}元💪</view>
       <view class="out_crl">
         <view class="second_crl" @tap="sign">
           <view class="in_crl">
@@ -11,12 +11,11 @@
             <text wx:if="{{!signed}}">签到</text>
             </text>
             <view class="line"></view>
-            <text class="sign_times">连续{{conDays}}天</text>
           </view>
         </view>
       </view>
-      <view class="sign_doc" wx:if="{{signed}}">今日已签到，获得10积分</view>
-      <view class="sign_doc" wx:if="{{!signed}}">今日还未签到</view>
+      <view class="sign_doc" wx:if="{{signed}}">已签到，💪，祝您工作开心！</view>
+      <view class="sign_doc" wx:if="{{!signed}}">请先签到😯</view>
     </view>
     <view class="line-box">
       <wepySignTime></wepySignTime>
@@ -25,7 +24,7 @@
     <view class="tab_box">
       <tab @currentTab.user="getCurrentTab" :currentTab.sync="currentTab" :tabList.sync="tabList"></tab>
     </view>
-    <scroll-view scroll-y="true" class="swiper-item-box" style="height:{{winHeight - 275}}px">
+    <scroll-view scroll-y="true" class="swiper-item-box" style="height:{{winHeight}}px">
       <!-- 积分规则 -->
       <pointsRule wx:if="{{currentTab==0}}"></pointsRule>
       <!-- 积分记录 -->
@@ -48,7 +47,7 @@
   import WepySignTime from '../components/common/wepy-sign-time';
   export default class SignIn extends wepy.page {
     config = {
-      navigationBarTitleText: '签到有礼',
+      navigationBarTitleText: '工作签到',
     }
     components = {
       tab: Tab,
@@ -59,7 +58,7 @@
     data = {
       currentTab: 0,
       winHeight: 0,
-      tabList: ["积分规则", "获得记录"],
+      tabList: ["佣金规则", "最新工资明细"],
       signed: false,
       score: 0,
       conDays: 0,
@@ -143,7 +142,7 @@
       sign() {
         let that = this;
         if (that.signed) {
-          tip.alert("你今天已签过了!");
+          tip.alert("你已经签到了，不能重复签到!");
         } else {
           that.doSign();
         }

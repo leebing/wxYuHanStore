@@ -1,15 +1,19 @@
 <!--积分规则-->
 <template>
   <view class="jf_rule">
-    <view class="title tc">素洁服装厂积分规则</view>
+    <view class="title tc">佣金规则</view>
     <!--<view class="jf_jz_title tc">积分价值</view>-->
     <view class="jf_content">
-      <view class="sec_title">1.签到积分规则 </view>
-      <view class="jf_ins">亲，每天签到送积分啦！每天签到一次送10积分，如连续签到5天（不间断），积分则是5（天）x10（积分），即50积分。</view>
+      <view class="sec_title">1.推荐佣金计算方式 </view>
+      <view class="jf_ins">根据每个被推荐者实际工作时间，在被推荐者获取工资后，结算推荐者的推荐佣金。</view>
     </view>
     <view class="jf_content">
-      <view class="sec_title">2.积分使用规则 </view>
-      <view class="jf_ins">积分可以享受满立减，下单更优惠！满50积分可抵消5元现金，在下单支付界面系统会自动显示你的总积分，付款之后在订单总金额上系统会自动减去5元。</view>
+      <view class="sec_title">2.管理佣金计算方式 </view>
+      <view class="jf_ins">按照实际管理人数、管理的工作量（工时）在结算工资后结算管理佣金。</view>
+    </view>
+    <view class="jf_content">
+      <view class="sec_title">3.佣金提取规则 </view>
+      <view class="jf_ins">可按10元的整倍数提取佣金（如109.9元可提取100元，9.9元先累计在平台，待满整后提取。</view>
     </view>
     <!--<view class="jf_content">
       <view class="sec_title">积分社区的价值</view>

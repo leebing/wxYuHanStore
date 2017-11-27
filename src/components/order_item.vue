@@ -6,50 +6,36 @@
     <navigator class="item_content" url="/pages/order_detail?orderNo={{item.orderNo}}">
       <view class="order_list_top">
         <view class="left">
-          <view class="title">订单号：
+          <view class="title">报名编号：
             <text class="order_doc">{{item.orderNo}}</text>
           </view>
-          <view class="title mt10">提交时间：
+          <view class="title mt10">报名时间：
             <text class="order_doc">{{item.createTime}}</text>
           </view>
         </view>
 
         <view class="order_state" wx:if="{{item.auditStatus==5}}">
-          审批中
+          确认中
         </view>
-        <view class="order_state" wx:elif="{{item.auditStatus==-1}}"> 审批不通过 </view>
+        <view class="order_state" wx:elif="{{item.auditStatus==-1}}"> 报名被拒绝 </view>
         <view wx:else>
           <text class="defult" wx:if="{{item.status==0}}">
-            <view class="order_state">待支付</view>
+            <view class="order_state">待确认</view>
           </text>
-          <view class="order_state" wx:if="{{item.status==0}}">待付款</view>
-          <view class="order_state" wx:if="{{item.status==2 || item.status==1}}">待收货</view>
-          <view class="order_state" wx:if="{{item.status==4}}">已完成</view>
-          <view class="order_state" wx:if="{{item.status==3}}">待评论</view>
+          <view class="order_state" wx:if="{{item.status==1}}">已通过</view>
+          <view class="order_state" wx:if="{{item.status==2}}">已取消</view>
+          <view class="order_state" wx:if="{{item.status==3}}">已确认</view>
         </view>
     </view>
 
     <view class="order_list_center">
-      <shopItemList :list.sync="item.orderItemList"></shopItemList>
+      <jobItemList :list.sync="item.orderItemList"></jobItemList>
     </view>
   </navigator>
   <view class="order_list_footer">
-    <view class="reveiveMoney c333">应付款：
-      <text class="num">{{item.goodsPrices}}</text>
-    </view>
-
-    <view class="order_state" wx:if="{{item.auditStatus==5}}">
-    </view>
-    <view wx:elif="{{item.auditStatus==-1}}">
+    <view class="order_state" wx:if="{{item.status!==3}}">
       <view class="btn_group">
-        <view class="btn btn_del" @tap="delOrder" data-id="{{item.orderNo}}">删除订单</view>
-      </view>
-    </view>
-    <view wx:else>
-      <view class="btn_group">
-        <view class="btn btn_del" @tap="delOrder" data-id="{{item.orderNo}}" wx:if="{{item.status==0 || item.status==4}}">删除订单</view>
-        <view class="btn btn_pay" @tap="payMoney" data-id="{{item.orderNo}}" data-tradeno="{{item.payTradeNo}}" wx:if="{{item.status==0}}">立即付款</view>
-        <view class="btn btn_pay" @tap="completion" data-id="{{item.orderNo}}" wx:if="{{item.status==2 || item.status==1}}">确认收货</view>
+        <view class="btn btn_del" @tap="delOrder" data-id="{{item.orderNo}}">取消报名</view>
       </view>
     </view>
   </view>
@@ -61,7 +47,7 @@
 <script>
 import wepy from 'wepy'
 import tip from '../utils/tip'
-import ShopItemList from '../components/shop_item_list'
+import JobItemList from '../components/job_item_list'
 import api from '../api/api'
 import {
   SYSTEM_INFO,
@@ -97,7 +83,7 @@ export default class orderItem extends wepy.component {
     that.$apply();
   }
   components = {
-    shopItemList: ShopItemList
+    jobItemList: JobItemList
   }
 
   events = {

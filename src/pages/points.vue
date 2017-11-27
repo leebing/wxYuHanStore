@@ -7,20 +7,20 @@
           <image class="avatarUrl" src="{{avatarUrl}}"></image>
         </view>
         <view class="jf_num cfff">
-          <view class='jf_title'>我的积分</view>
+          <view class='jf_title'>我的佣金</view>
           <view class='jf_title mt25'><i class="iconfont icon-jifen"></i>
             <view class="cfff">{{userPoint}}</view>
           </view>
         </view>
-        <view class="btn_jf_rule" @tap="jfRule">积分说明</view>
+        <view class="btn_jf_rule" @tap="jfRule">佣金规则</view>
       </view>
     </view>
     <view class="jf_detai">
-      <view class="left">积分明细</view>
+      <view class="left">佣金明细</view>
       <view class="right" @tap="more">查看更多</view>
     </view>
     <scroll-view scroll-y="true" class="swiper-item-box" style="height:{{winHeight-165}}px">
-      <!-- 积分记录 -->
+      <!-- 佣金记录 -->
       <pointsDetail :is_empty.sync="is_empty" :list.sync="list"></pointsDetail>
     </scroll-view>
   </view>

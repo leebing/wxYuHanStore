@@ -3,19 +3,20 @@ import orderItem from "../components/order_item.wpy";
   <view style="height:{{winHeight}}rpx;overflow:hidden">
     <import src="../plugins/wxParse/wxParse.wxml" />
     <!--index.wxml-->
-    <swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" indicator-active-color="#ffc452" indicator-color="#efefef" class="swiper">
+    <!-- <swiper indicator-dots="true" autoplay="true" interval="5000" duration="500" indicator-active-color="#ffc452" indicator-color="#efefef" class="swiper">
       <block wx:for="{{detail.photoList}}" key="item" item="item" wx:key="key">
         <swiper-item>
           <image src="{{item.photo}}" class="slide-image" />
         </swiper-item>
       </block>
-    </swiper>
+    </swiper> -->
     <view class="details-msg">
-      <view class="details-title">{{detail.name}}</view>
+      <!-- <view class="details-title">{{detail.name}}</view> -->
+      <view class="details-title">百世汇通物流包裹分拣线短期分拣员</view>
       <view class="details_pinfo">
         <view class="jby">
-          <text class="price">￥{{detail.price}}</text>
-          <view class="baoyou">满{{detail.freeShipNum}}件包邮</view>
+          <text class="price">￥{{detail.price}} 元/小时</text>
+          <view class="baoyou">{{detail.dayOrNigth?'白班':'夜班'}}</view>
         </view>
         <view class="order_time {{purchasetype==2?'hidden':''}}">
           <timer :startTime.sync="startTime" :endTime.sync="endTime"></timer>
@@ -23,73 +24,68 @@ import orderItem from "../components/order_item.wpy";
       </view>
     </view>
     <view class="order_num">
-      <view class="doc">规定单数:
-        <text class="num">{{detail.minBuyNum}}件成团</text>
+      <view class="doc">需要人数:
+        <text class="num">{{detail.maxCount || 999}}人</text>
       </view>
-      <view class="doc">订单中:
-        <text class="num">已拼{{detail.saleCount}}件</text>
+      <view class="doc">当前报名数:
+        <text class="num">{{detail.reqCount || 100}}人</text>
       </view>
     </view>
     <view class="block">
-      <view class="block_title">拼货流程</view>
+      <view class="block_title">工作时间</view>
+      <view class="block_content">
+        <view class="doc">
+          2017年12月1日 - 2017年12月30日
+        </view>
+        <view class="doc">
+          9:00 - 21:00 (有加班)
+        </view>
+      </view>
+    </view>
+    <view class="block">
+      <view class="block_title">工作流程</view>
       <view class="block_content">
         <view class="process">
-          新款展示
-          <i class="iconfont icon-next"></i> 拼单结束
-          <i class="iconfont icon-next"></i> 生产商品
-          <i class="iconfont icon-next"></i> 商品检验
-          <i class="iconfont icon-next"></i> 商品发货
+          <i class="iconfont icon-next"></i> 报名
+          <i class="iconfont icon-next"></i> 确认
+          <i class="iconfont icon-next"></i> 现场签到
+          <i class="iconfont icon-next"></i> 收钱
         </view>
         <view class="doc">
-          如若出现特殊情况外，发货时间则会延迟5-10天左右。
+          付款为平台自动从企业公众号自动发放，除非系统故障等特殊原因，工资均为日结。
         </view>
       </view>
     </view>
     <view class="spacing"></view>
     <view class="block">
-      <view class="block_title">拼单说明</view>
+      <view class="block_title">工作内容说明</view>
       <view class="block_content">
         <view class="doc">
-          此商品在拼单期间可接收订单，如若超过拼单时间则不能下单；拼单结束后未付款订单系统将会自动取消，所以，亲下单以后请尽快付款。我们会以实际订单为准为您发货，如超过订单时间而又没有拼购到规定数量的，我们将会第一时间为您退款，请您放心购买!
+          根据分配，完成快递包裹分担工作，无特殊要求，工作较为辛苦，请自行判断!
         </view>
       </view>
     </view>
     <view class="spacing"></view>
     <view class="block">
-      <view class="block_title">商品信息</view>
+      <view class="block_title">温馨提示</view>
       <view class="block_content">
-        <view class="table">
-          <view class="th" wx:for="{{detail.attrList}}" key="item" item="item" wx:key="key">
-            <view class="tr1" wx:for="{{item}}" key="item" item="item" wx:key="key">{{item.attrName}}:{{item.attrVal}}</view>
-          </view>
+        <view class="doc">
+          请大家注意安全，晚上下班时，最好多人一起回家，注意安全。
+          特别提醒：日间午饭较为麻烦，如不能自行解决，可委托管理人员代为购买快餐。
         </view>
       </view>
     </view>
-    <view class="spacing"></view>
-    <view class="block">
-      <view class="block_title">商品详情</view>
-    </view>
-    <view class="big_images">
-      <view class="doc">
-        <view class="wxParse-p">
-          <template is="wxParse" data="{{wxParseData:detailInfo.nodes}}"></template>
-        </view>
-      </view>
-    </view>
+    
     <view class="detail-bottom">
       <view class="bottom-box">
         <contact-button class="contact">
         </contact-button>
         <view class="item">
           <i class="iconfont icon-message"></i>
-          <view class="doc">客服</view>
+          <view class="doc">邀请工友赚佣金</view>
         </view>
-        <view class="item {{isFavorite?'selec_active':''}}" @tap="takeFavorite">
-          <i class="iconfont icon-collection"></i>
-          <view class="doc">收藏</view>
-        </view>
-        <view class="sy-bottom {{canOrder?'btn_cart':'cart_color'}}" @tap="takeCart">加入购物车</view>
-        <view class="sy-bottom {{canOrder?'btn_order':'order_color'}}" @tap="takeOrder">{{purchaseText}}</view>
+        <view class="sy-bottom {{canRequest?'btn_cart':'cart_color'}}" @tap="takeCart">我要报名</view>
+        <view class="sy-bottom {{canRequest?'btn_order':'order_color'}}" @tap="takeOrder">{{purchaseText}}</view>
       </view>
     </view>
     <view class="over_model {{hidden?'hidden':''}}"></view>
@@ -97,7 +93,7 @@ import orderItem from "../components/order_item.wpy";
       <view class="model_content">
         <view class="head_box">
           <view class="img_wrap">
-            <image class="goods_img" src="{{detail.logo}}" />
+            <image class="jobs_img" src="{{detail.logo}}" />
           </view>
           <view class="product_wrap">
             <view class="product_name">{{detail.name}}</view>
@@ -105,7 +101,7 @@ import orderItem from "../components/order_item.wpy";
           </view>
         </view>
         <scroll-view scroll-y="true" style="height:400rpx">
-          <view class="rule_box" wx:for="{{detail.goodsSkuNameList}}" item="item" wx:key="key" wx:for-index="ex">
+          <view class="rule_box" wx:for="{{detail.jobsSkuNameList}}" item="item" wx:key="key" wx:for-index="ex">
             <view class="title">{{item.skuName}}</view>
             <view class="items">
               <view class="item {{item.current?'active':''}}" wx:for="{{item.skuValList}}" item="item" wx:key="key" @tap.stop="selAttr" data-id="{{item.skuValId}}" data-nameid="{{item.skuNameId}}" data-index="{{ex}}">{{item.skuVal}}</view>
@@ -137,9 +133,9 @@ import tip from '../utils/tip'
 import api from '../api/api';
 import Timer from "../components/common/timer"
 import WxParse from "../plugins/wxParse/wxParse"
-export default class goodsDetail extends wepy.page {
+export default class jobsDetail extends wepy.page {
   config = {
-    navigationBarTitleText: '商品详情'
+    navigationBarTitleText: '工作详情'
   }
   components = {
     timer: Timer
@@ -148,7 +144,7 @@ export default class goodsDetail extends wepy.page {
   data = {
     winWidth: 0,
     winHeight: '100%',
-    goodsId: 0,
+    jobsId: 0,
     detail: {},
     good_bigimg: [],
 
@@ -171,9 +167,9 @@ export default class goodsDetail extends wepy.page {
     //是否收藏
     isFavorite: false,
     isValidDate: true,
-    canOrder: true, //是否能下单
+    canRequest: true, //是否能下单
     purchasetype : 1,//1-正常购买;2-补货
-    purchaseText : "立即购买"
+    purchaseText : "我要当组长"
   }
 
   onLoad(option) {
@@ -182,29 +178,24 @@ export default class goodsDetail extends wepy.page {
     this.purchasetype=1;
     this.isFavorite = false;
     this.isValidDate = true;
-    this.canOrder = true;
+    this.canRequest = true;
     this.hidden = true;
     this.winHeight = "100%";
     that.detail = {};
     that.$apply();
     //接收上一个页面传过来的参数
-    that.goodsId = option.id;
+    that.jobsId = option.id;
     if (option.purchasetype!=undefined) {
       this.purchasetype = option.purchasetype;
     }
-    if (this.purchasetype==2) {
-      this.purchaseText = "申请补货";
-    } else {
-      this.purchaseText = "立即购买";
-    }
     console.log("purchasetype=="+this.purchasetype);
-    that.getGoodsDetail();
+    that.getJobsDetail();
 
     that.addUserBrowser();
   }
 
   onShow() {
-    this.goodsIsFavorite();
+    this.jobsIsFavorite();
     //创建动画
     var animation = wx.createAnimation({
       transformOrigin: "50% 50%",
@@ -221,12 +212,12 @@ export default class goodsDetail extends wepy.page {
       that.$apply();
     }
   }*/
-  async getGoodsDetail() {
+  async getJobsDetail() {
     let that = this;
     //const json = await api.getGoodsDetail({
-    const json = await api.goodsDetail({
+    const json = await api.jobsDetail({
       query: {
-        id: that.goodsId
+        id: that.jobsId
       }
     });
     let time = {};
@@ -241,7 +232,7 @@ export default class goodsDetail extends wepy.page {
       if (json.data.validDate == "0") {
         that.isValidDate = false;
         if (this.purchasetype==1) {
-          this.canOrder = false;
+          this.canRequest = false;
         }
       }
 
@@ -258,7 +249,7 @@ export default class goodsDetail extends wepy.page {
     let openId = userSpecialInfo.openid;
     const json = await api.addBrowser({
       query: {
-        goodsId: that.goodsId,
+        jobsId: that.jobsId,
         openId: openId
       }
     });
@@ -280,8 +271,8 @@ export default class goodsDetail extends wepy.page {
     const json = await api.addCart({
       query: {
         openId: openId,
-        goodsId: that.goodsId,
-        goodsSkuId: this.detail.goodsSkuValIds,
+        jobsId: that.jobsId,
+        jobsSkuId: this.detail.jobsSkuValIds,
         purchaseType: this.purchasetype,
         num : this.orderNum
       }
@@ -297,7 +288,7 @@ export default class goodsDetail extends wepy.page {
         this.hidden = true;
         this.$apply();
       }, 100)
-      tip.success("成功加入购物车");
+      tip.success("报名成功");
 
     } else {
       tip.error(json.data.msg)
@@ -305,15 +296,15 @@ export default class goodsDetail extends wepy.page {
   }
 
   //立即购买
-  async doTakeOrder() {
+  async reqTeamLeader() {
     let that = this;
     let userSpecialInfo = wepy.getStorageSync(USER_SPECICAL_INFO) || {};
     let openId = userSpecialInfo.openid;
     const json = await api.addCart({
       query: {
         openId: openId,
-        goodsId: that.goodsId,
-        goodsSkuId: this.detail.goodsSkuValIds,
+        jobsId: that.jobsId,
+        jobsSkuId: this.detail.jobsSkuValIds,
         purchaseType: this.purchasetype,
         num : this.orderNum
       }
@@ -329,7 +320,7 @@ export default class goodsDetail extends wepy.page {
         this.$apply();
       }, 100)
       wepy.navigateTo({
-        url: "/pages/comfire_order?goodsId=" + that.goodsId + "&purchasetype="+that.purchasetype
+        url: "/pages/comfire_order?jobsId=" + that.jobsId + "&purchasetype="+that.purchasetype
       })
     } else {
       tip.error(json.data.msg)
@@ -350,14 +341,14 @@ export default class goodsDetail extends wepy.page {
     }, 100)
   }
   //查看商品收藏状态
-  async goodsIsFavorite() {
+  async jobsIsFavorite() {
     let that = this;
     let userSpecialInfo = wepy.getStorageSync(USER_SPECICAL_INFO) || {};
     let openId = userSpecialInfo.openid;
-    const json = await api.goodsIsFavorite({
+    const json = await api.jobsIsFavorite({
       query: {
         openId: openId,
-        goodsId: that.goodsId
+        jobsId: that.jobsId
       }
     });
     if (json.data.code == 0) {
@@ -374,14 +365,14 @@ export default class goodsDetail extends wepy.page {
   }
 
   //商品收藏
-  async goodsFavorite() {
+  async jobsFavorite() {
     let that = this;
     let userSpecialInfo = wepy.getStorageSync(USER_SPECICAL_INFO) || {};
     let openId = userSpecialInfo.openid;
-    const json = await api.goodsFavorite({
+    const json = await api.jobsFavorite({
       query: {
         openId: openId,
-        goodsId: that.goodsId
+        jobsId: that.jobsId
       }
     });
     if (json.data.code == 0) {
@@ -395,14 +386,14 @@ export default class goodsDetail extends wepy.page {
   }
 
   //商品取消收藏
-  async goodsUnFavorite() {
+  async jobsUnFavorite() {
     let that = this;
     let userSpecialInfo = wepy.getStorageSync(USER_SPECICAL_INFO) || {};
     let openId = userSpecialInfo.openid;
-    const json = await api.goodsUnFavorite({
+    const json = await api.jobsUnFavorite({
       query: {
         openId: openId,
-        goodsId: that.goodsId
+        jobsId: that.jobsId
       }
     });
     if (json.data.code == 0) {
@@ -420,7 +411,7 @@ export default class goodsDetail extends wepy.page {
       this.orderNum = e.detail.value;
     },
     takeOrder() {
-      if (!this.canOrder) {
+      if (!this.canRequest) {
         return;
       }
       this.showConfirmData();
@@ -428,7 +419,7 @@ export default class goodsDetail extends wepy.page {
       //this.doTakeOrder();
     },
     takeCart() {
-      if (!this.canOrder) {
+      if (!this.canRequest) {
         return;
       }
       this.showConfirmData();
@@ -437,11 +428,11 @@ export default class goodsDetail extends wepy.page {
     },
     takeFavorite() {
       if (this.isFavorite == true) {
-        this.goodsUnFavorite();
+        this.jobsUnFavorite();
         console.log("取消收藏");
         console.log(this.isFavorite);
       } else {
-        this.goodsFavorite();
+        this.jobsFavorite();
         console.log("收藏")
       }
     },
@@ -476,23 +467,23 @@ export default class goodsDetail extends wepy.page {
       var id = e.currentTarget.dataset.id;
       var nameid = e.currentTarget.dataset.nameid;
       var index = e.currentTarget.dataset.index;
-      for (var i = 0; i < this.detail.goodsSkuNameList.length; i++) {
-        var skuValList = this.detail.goodsSkuNameList[i].skuValList;
+      for (var i = 0; i < this.detail.jobsSkuNameList.length; i++) {
+        var skuValList = this.detail.jobsSkuNameList[i].skuValList;
         for (var j = 0; j < skuValList.length; j++) {
           var skuVal = skuValList[j];
           if (skuVal.skuNameId == nameid) {
             skuVal.current = false;
             if (skuVal.skuValId == id) {
               skuVal.current = true;
-              this.detail.goodsSkuValIds[index] = id;
-              for (var k = 0; k < this.detail.goodsSkuList.length; k++) {
-                var skuValIds = JSON.parse(this.detail.goodsSkuList[k].skuValIds).toArray;
-                console.log("goodskuids..." + this.detail.goodsSkuList[k].skuValIds);
-                console.log("this goodskuids..." + this.detail.goodsSkuValIds);
-                if ("[" + this.detail.goodsSkuValIds.toString() + "]" === this.detail.goodsSkuList[k].skuValIds) {
-                  console.log("goodskuids equals...");
-                  this.detail.stockNum = this.detail.goodsSkuList[k].stockNum;
-                  this.detail.price = this.detail.goodsSkuList[k].price;
+              this.detail.jobsSkuValIds[index] = id;
+              for (var k = 0; k < this.detail.jobsSkuList.length; k++) {
+                var skuValIds = JSON.parse(this.detail.jobsSkuList[k].skuValIds).toArray;
+                console.log("jobskuids..." + this.detail.jobsSkuList[k].skuValIds);
+                console.log("this jobskuids..." + this.detail.jobsSkuValIds);
+                if ("[" + this.detail.jobsSkuValIds.toString() + "]" === this.detail.jobsSkuList[k].skuValIds) {
+                  console.log("jobskuids equals...");
+                  this.detail.stockNum = this.detail.jobsSkuList[k].stockNum;
+                  this.detail.price = this.detail.jobsSkuList[k].price;
                   this.$apply();
                   break;
                 }
@@ -509,7 +500,7 @@ export default class goodsDetail extends wepy.page {
       }
       return {
         title: this.detail.name,
-        path: '/pages/goods_detail?id='+this.goodsId,
+        path: '/pages/jobs_detail?id='+this.jobsId,
         success: function(res) {
           // 转发成功
         },
@@ -731,7 +722,7 @@ export default class goodsDetail extends wepy.page {
     width: 200rpx;
     background: #000;
   }
-  .goods_img {
+  .jobs_img {
     height: 200rpx;
     width: 200rpx;
     background: #000;

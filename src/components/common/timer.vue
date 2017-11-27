@@ -9,7 +9,7 @@
     <view class="bg"></view>
     <view class="time_box">
       <view class="time">{{strD>=0?strD+"天":""}}{{strH}}:{{strM}}:{{strS}}</view>
-      <view class="over">订单结束</view>
+      <view class="over">报名截止</view>
     </view>
   </view>
   <view wx:if="{{!isShow}}">
@@ -22,7 +22,7 @@
     <view class="bg"></view>
     <view class="time_box">
     <view class="time_zero">{{endTxt}}</view>
-    <view class="over">订单结束</view>
+    <view class="over">报名截止</view>
   </view>
   </view>
 </template>

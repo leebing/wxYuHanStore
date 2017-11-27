@@ -3,7 +3,7 @@
     <view class="search_read_only">
       <navigator class="search_content" url="/pages/search">
         <i class="iconfont icon-search"></i>
-        <view class="search_input">搜索商品</view>
+        <view class="search_input">搜索工作</view>
       </navigator>
     </view>
   </view>
@@ -98,7 +98,6 @@ export default class Classify extends wepy.page {
     let systemInfo = wx.getStorageSync(SYSTEM_INFO);
     this.windowHeight = systemInfo.windowHeight;
     this.$apply();
-    console.log(aa)
   }
 
   onShow() {
@@ -126,12 +125,14 @@ export default class Classify extends wepy.page {
     onShareAppMessage: function (res) {
       if (res.from === 'button') {
         // 来自页面内转发按钮
+        console.log('分享按钮')
         console.log(res.target)
       }
       return {
         title: this.detail.name,
         path: '/pages/classify',
         success: function(res) {
+          console.log('转发成功')
           // 转发成功
         },
         fail: function(res) {

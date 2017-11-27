@@ -25,12 +25,11 @@ export default class extends wepy.app {
       'pages/home',
       'pages/home_detail',
       'pages/classify',
-      'pages/shop_cart',
+      'pages/job_request',
       'pages/info',
       'pages/search',
       'pages/test',
       'pages/sign_in',
-      'pages/exchange_goods',
       'pages/wholesale',
       'pages/replenishment_goods',
       'pages/register',
@@ -75,10 +74,10 @@ export default class extends wepy.app {
         "iconPath": "images/icon_classify.png",
         "selectedIconPath": "images/icon_classify_active.png"
       }, {
-        "pagePath": "pages/shop_cart",
-        "text": "购物车",
-        "iconPath": "images/icon_shop_cart.png",
-        "selectedIconPath": "images/icon_shop_cart_active.png"
+        "pagePath": "pages/job_request",
+        "text": "我的工作",
+        "iconPath": "images/icon_job_request.png",
+        "selectedIconPath": "images/icon_job_request_active.png"
       }, {
         "pagePath": "pages/info",
         "text": "我",

@@ -1,14 +1,14 @@
 <template>
-  <view class="shop_cart">
+  <view class="job_request">
     <shopCart></shopCart>
   </view>
 </template>
 <script>
 import wepy from 'wepy';
-import ShopCart from '../components/shop_cart'
+import ShopCart from '../components/job_request'
 export default class shopCart extends wepy.page {
   config = {
-    navigationBarTitleText: '购物车',
+    navigationBarTitleText: '我的工作',
   }
   components = {
     shopCart: ShopCart
@@ -35,7 +35,7 @@ export default class shopCart extends wepy.page {
 
 </script>
 <style lang="less">
-.shop_cart {
+.job_request {
   background: #f7f7f7;
 }
 

@@ -62,7 +62,7 @@ export default class HomeDetail extends wepy.page {
   async getGoodList(currentPage, size) {
     let that = this;
     //const json = await api.getGoodsList({
-    const json = await api.hostGoodsList({
+    const json = await api.hostJobsList({
       query: {
         page: currentPage || 1,
         size: size || 10,

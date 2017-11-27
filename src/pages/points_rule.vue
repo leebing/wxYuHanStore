@@ -11,7 +11,7 @@ import api from '../api/api';
 import PointsRule from '../components/points_rule'
 export default class PointsRules extends wepy.page {
   config = {
-    navigationBarTitleText: '积分说明',
+    navigationBarTitleText: '佣金规则',
   }
   components = {
     pointsRule: PointsRule

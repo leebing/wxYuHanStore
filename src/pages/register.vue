@@ -69,7 +69,6 @@ export default class Register extends wepy.page {
           // that.list = json.data.list;
           wepy.navigateBack();
           console.log("绑定成功.....");
-
           that.$apply();
         } else {
           tip.error(json.data.msg)

@@ -41,7 +41,7 @@
           <view class="item_content">{{userInfo.mobile}}</view>
         </view>
         <view class="item_bock">
-          <view class="title">收货地址</view>
+          <view class="title">居住地址</view>
           <navigator class="item_content" url="/pages/address">更改地址 &gt;</navigator>
         </view>
       </view>
@@ -78,7 +78,6 @@ export default class Messages extends wepy.page {
     });
     if (json.data.code == 0) {
       this.userInfo=json.data.user;
-      console.log("===================")
       console.log(that.userInfo);
       that.$apply();
     } else {
